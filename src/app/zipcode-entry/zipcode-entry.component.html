@@ -3,5 +3,9 @@
   <input type="text" [formControl]="zipcodeControl" placeholder="Zipcode" class="form-control">
   <country-autocomplete [countryCodeControl]="countryControl" [placeholder]="'Country'"></country-autocomplete>
   <br>
-  <three-states-button (click)="addLocation()" [stateObservable]="addObservable"></three-states-button>
+  <three-states-button (click)="addLocation()" [stateObservable]="addObservable">
+    <span default >Add location</span>
+    <span working>Adding location...</span>
+    <span done>Done!</span>
+  </three-states-button>
 </div>

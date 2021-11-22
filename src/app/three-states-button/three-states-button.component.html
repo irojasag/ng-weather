@@ -4,7 +4,9 @@
     'btn-success': state === buttonStates.DONE,
     'btn-primary': state !== buttonStates.DONE
   }">
-    {{state === buttonStates.DONE ? "Done!" : "Add location"}}
+    <ng-content *ngIf="state === buttonStates.DEFAULT" select="[default]"></ng-content>
+    <ng-content *ngIf="state === buttonStates.WORKING" select="[working]"></ng-content>
+    <ng-content *ngIf="state === buttonStates.DONE" select="[done]"></ng-content>
     <img [hidden]="state !== buttonStates.WORKING" src="https://c.tenor.com/5o2p0tH5LFQAAAAi/hug.gif" width="16" alt="Loading">
   </button>
 </ng-container>
