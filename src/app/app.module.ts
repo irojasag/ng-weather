@@ -1,6 +1,6 @@
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
-import { FormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 
 import { AppComponent } from "./app.component";
 import { ZipcodeEntryComponent } from "./zipcode-entry/zipcode-entry.component";
@@ -15,6 +15,7 @@ import { HttpClientModule } from "@angular/common/http";
 import { ServiceWorkerModule } from "@angular/service-worker";
 import { environment } from "../environments/environment";
 import { ThreeStatesButtonComponent } from "./three-states-button/three-states-button.component";
+import { CountryService } from "./country.service";
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { ThreeStatesButtonComponent } from "./three-states-button/three-states-b
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     RouterModule,
     routing,
@@ -35,7 +37,7 @@ import { ThreeStatesButtonComponent } from "./three-states-button/three-states-b
       enabled: environment.production,
     }),
   ],
-  providers: [LocationService, WeatherService],
+  providers: [LocationService, WeatherService, CountryService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

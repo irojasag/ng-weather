@@ -1,6 +1,9 @@
 <div class="well">
   <h2>Enter a zipcode:</h2>
-  <input type="text" #zipcode placeholder="Zipcode" class="form-control">
+  <input type="text" [formControl]="zipcodeControl" placeholder="Zipcode" class="form-control">
+  <input type="text" [formControl]="countryControl" placeholder="Country" class="form-control">
+
+
   <br>
-  <three-states-button (click)="addLocation(zipcode.value)" [stateObservable]="addObservable"></three-states-button>
+  <three-states-button (click)="addLocation()" [stateObservable]="addObservable"></three-states-button>
 </div>
