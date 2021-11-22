@@ -1,8 +1,8 @@
 import { Injectable } from "@angular/core";
-import { concat, interval, Observable } from "rxjs";
+import { interval, Observable, Subject } from "rxjs";
 import { mergeMap } from "rxjs/operators";
-
 import { HttpClient } from "@angular/common/http";
+import { ButtonState } from "./constants/button-states.contant";
 
 @Injectable()
 export class WeatherService {
@@ -14,11 +14,21 @@ export class WeatherService {
 
   constructor(private http: HttpClient) {}
 
-  addCurrentConditions(zipcode: string): void {
+  addCurrentConditions(
+    zipcode: string,
+    addSubject?: Subject<ButtonState>
+  ): void {
     // Here we make a request to get the curretn conditions data from the API. Note the use of backticks and an expression to insert the zipcode
     const url = `${WeatherService.URL}/weather?zip=${zipcode},us&units=imperial&APPID=${WeatherService.APPID}`;
     this.http.get(url).subscribe((data) => {
       this.handleWeatherUpdate(data, zipcode);
+
+      if (addSubject) {
+        addSubject.next(ButtonState.DONE);
+        setTimeout(() => {
+          addSubject.next(ButtonState.DEFAULT);
+        }, 500);
+      }
 
       interval(0.5 * 60 * 1000)
         .pipe(mergeMap(() => this.http.get(url)))

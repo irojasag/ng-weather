@@ -1,0 +1,10 @@
+<ng-container *ngIf="stateObservable | async; let state;">
+  <button class="btn btn-primary" [ngClass]="{
+    'disabled': state === buttonStates.WORKING,
+    'btn-success': state === buttonStates.DONE,
+    'btn-primary': state !== buttonStates.DONE
+  }">
+    {{state === buttonStates.DONE ? "Done!" : "Add location"}}
+    <img [hidden]="state !== buttonStates.WORKING" src="https://c.tenor.com/5o2p0tH5LFQAAAAi/hug.gif" width="16" alt="Loading">
+  </button>
+</ng-container>

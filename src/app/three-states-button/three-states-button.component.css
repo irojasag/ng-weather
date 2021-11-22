@@ -1,0 +1,12 @@
+button {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+button img {
+  margin-left: 8px;
+}
+button:disabled {
+  cursor: not-allowed;
+  pointer-events: all !important;
+}
