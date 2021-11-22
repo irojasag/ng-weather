@@ -1,0 +1,17 @@
+.option-container {
+  background-color: white;
+  min-height: 0px;
+  max-height: 300px;
+  overflow: scroll;
+  width: full;
+}
+
+.option {
+  background-color: white;
+  border: 1px solid #666;
+  height: 24px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 12px;
+}

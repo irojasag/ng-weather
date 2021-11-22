@@ -16,6 +16,7 @@ import { ServiceWorkerModule } from "@angular/service-worker";
 import { environment } from "../environments/environment";
 import { ThreeStatesButtonComponent } from "./three-states-button/three-states-button.component";
 import { CountryService } from "./country.service";
+import { CountryAutocompleteComponent } from './country-autocomplete/country-autocomplete.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { CountryService } from "./country.service";
     CurrentConditionsComponent,
     MainPageComponent,
     ThreeStatesButtonComponent,
+    CountryAutocompleteComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,9 +1,7 @@
 <div class="well">
   <h2>Enter a zipcode:</h2>
   <input type="text" [formControl]="zipcodeControl" placeholder="Zipcode" class="form-control">
-  <input type="text" [formControl]="countryControl" placeholder="Country" class="form-control">
-
-
+  <country-autocomplete [countryCodeControl]="countryControl" [placeholder]="'Country'"></country-autocomplete>
   <br>
   <three-states-button (click)="addLocation()" [stateObservable]="addObservable"></three-states-button>
 </div>

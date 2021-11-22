@@ -22,6 +22,5 @@ export class ZipcodeEntryComponent {
     const countryCode = this.countryControl.value;
     this.service.addLocation({ zipcode, countryCode });
     this.zipcodeControl.setValue("");
-    this.countryControl.setValue("");
   }
 }

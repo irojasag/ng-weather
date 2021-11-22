@@ -21,20 +21,29 @@ export class WeatherService {
   ): void {
     // Here we make a request to get the curretn conditions data from the API. Note the use of backticks and an expression to insert the zipcode
     const url = `${WeatherService.URL}/weather?zip=${location.zipcode},${location.countryCode}&units=imperial&APPID=${WeatherService.APPID}`;
-    this.http.get(url).subscribe((data) => {
-      this.handleWeatherUpdate(data, location);
+    this.http.get(url).subscribe(
+      (data) => {
+        this.handleWeatherUpdate(data, location);
 
-      if (addSubject) {
-        addSubject.next(ButtonState.DONE);
-        setTimeout(() => {
-          addSubject.next(ButtonState.DEFAULT);
-        }, 500);
+        if (addSubject) {
+          addSubject.next(ButtonState.DONE);
+          setTimeout(() => {
+            addSubject.next(ButtonState.DEFAULT);
+          }, 500);
+        }
+
+        interval(0.5 * 60 * 1000)
+          .pipe(mergeMap(() => this.http.get(url)))
+          .subscribe((data) => this.handleWeatherUpdate(data, location));
+      },
+      (err) => {
+        if (addSubject) {
+          setTimeout(() => {
+            addSubject.next(ButtonState.DEFAULT);
+          }, 500);
+        }
       }
-
-      interval(0.5 * 60 * 1000)
-        .pipe(mergeMap(() => this.http.get(url)))
-        .subscribe((data) => this.handleWeatherUpdate(data, location));
-    });
+    );
   }
 
   handleWeatherUpdate(data: any, location: Location) {

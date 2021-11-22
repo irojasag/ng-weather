@@ -1,0 +1,7 @@
+<input type="text" [formControl]="countryControl" placeholder="{{placeholder}}" class="form-control">
+
+<div class="option-container" *ngIf="showOptions">
+  <div class="option" *ngFor="let country of countries$ | async" (click)="selectCountry(country)">
+    {{country.flag}}{{country.name}}
+  </div>
+</div>
