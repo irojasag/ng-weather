@@ -1,7 +1,6 @@
 <input type="text" [formControl]="countryControl" placeholder="{{placeholder}}" class="form-control">
 
 <div class="option-container" *ngIf="showOptions">
-  <div class="option" *ngFor="let country of countries$ | async" (click)="selectCountry(country)">
-    {{country.flag}}{{country.name}}
+  <div class="option" *ngFor="let country of countries$ | async" (click)="selectCountry(country)" [innerHTML]="country.flag + (country.name | boldRegex:countryControl.value)">
   </div>
 </div>

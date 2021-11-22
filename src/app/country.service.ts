@@ -28,7 +28,7 @@ export class CountryService {
       this.countries = [];
       data.forEach((element) => {
         this.countries.push({
-          name: `${element.name.common}`,
+          name: `${element.name.official}`,
           code: element.cca2,
           flag: element.flag,
         });

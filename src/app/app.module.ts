@@ -16,7 +16,8 @@ import { ServiceWorkerModule } from "@angular/service-worker";
 import { environment } from "../environments/environment";
 import { ThreeStatesButtonComponent } from "./three-states-button/three-states-button.component";
 import { CountryService } from "./country.service";
-import { CountryAutocompleteComponent } from './country-autocomplete/country-autocomplete.component';
+import { CountryAutocompleteComponent } from "./country-autocomplete/country-autocomplete.component";
+import { BoldPipe } from "./bold.pipe";
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { CountryAutocompleteComponent } from './country-autocomplete/country-aut
     MainPageComponent,
     ThreeStatesButtonComponent,
     CountryAutocompleteComponent,
+    BoldPipe,
   ],
   imports: [
     BrowserModule,

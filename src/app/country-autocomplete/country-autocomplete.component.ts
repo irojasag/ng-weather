@@ -32,6 +32,7 @@ export class CountryAutocompleteComponent implements OnInit {
               c.name === countryName && c.code === this.countryCodeControl.value
           )
         ) {
+          this.countryCodeControl.patchValue(null);
           this.service.searchCountries(countryName);
           this.showOptions = true;
         } else {
